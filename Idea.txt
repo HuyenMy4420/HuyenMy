@@ -1,1 +1,8 @@
-Ý tưởng
+Ý tưởng trò chơi:
+- Thể loại: Game giải trí
+- Cách di chuyển: bằng phím mũi tên trên bàn phím( trái, phải, xuống dưới)
+- Nhân vật: trước khi chơi, người chơi có thể chọn lựa vũ khí để diệt vật cản trên đường
+- Màn chơi: Dự kiến có 2 màn 
+- Cách chơi: Người chơi điều kiển nhân vật đi xuống dưới tầng hầm, trên đường đi có các vật cản, khi người chơi tìm 
+được chìa khóa thì qua màn chơi hiện tại
+- Giao diện: màn chính sẽ có các nút Play( chơi), Options( điều chỉnh âm lượng hay bật tắt đi), Exit( thoát trò chơi)
