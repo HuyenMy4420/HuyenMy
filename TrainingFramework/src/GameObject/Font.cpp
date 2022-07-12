@@ -28,7 +28,7 @@ bool Font::Init(const std::string& font)
 		printf("Could not open font %s\n", font.c_str());
 		return false;
 	}
-	FT_Set_Pixel_Sizes(m_face, 0, 48);
+	FT_Set_Pixel_Sizes(m_face, 0, 35);
 	m_glyphSlot = m_face->glyph;
 
 	glGenTextures(1, &m_textureId);
