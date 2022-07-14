@@ -56,8 +56,8 @@ void GSPlay::Init()
 	m_score->Set2DPosition(Vector2(5, 25));
 
 	shader = ResourceManagers::GetInstance()->GetShader("Animation");
-	texture = ResourceManagers::GetInstance()->GetTexture("Actor1_2.tga");
-	std::shared_ptr<SpriteAnimation> obj = std::make_shared<SpriteAnimation>(model, shader, texture, 9, 6, 3, 0.1f);
+	texture = ResourceManagers::GetInstance()->GetTexture("penguin1.tga");
+	std::shared_ptr<SpriteAnimation> obj = std::make_shared<SpriteAnimation>(model, shader, texture, 9, 5, 3, 0.6f);
 	
 	obj->Set2DPosition(240, 400);
 	obj->SetSize(30, 40);
