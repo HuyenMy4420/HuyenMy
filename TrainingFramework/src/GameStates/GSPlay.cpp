@@ -26,8 +26,8 @@ GSPlay::~GSPlay()
 void GSPlay::Init()
 {
 	auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D.nfg");
-	auto texture = ResourceManagers::GetInstance()->GetTexture("bg_play1.tga");
-
+	auto texture = ResourceManagers::GetInstance()->GetTexture("level.tga");
+	
 	// background
 	auto shader = ResourceManagers::GetInstance()->GetShader("TextureShader");
 	m_background = std::make_shared<Sprite2D>(model, shader, texture);
@@ -35,7 +35,7 @@ void GSPlay::Init()
 	m_background->SetSize(Globals::screenWidth, Globals::screenHeight);
 
 	// button close
-	texture = ResourceManagers::GetInstance()->GetTexture("btn_close.tga");
+	texture = ResourceManagers::GetInstance()->GetTexture("btn_close1.tga");
 	std::shared_ptr<GameButton>  button = std::make_shared<GameButton>(model, shader, texture);
 	button->Set2DPosition(Globals::screenWidth - 50, 50);
 	button->SetSize(50, 50);
@@ -44,6 +44,11 @@ void GSPlay::Init()
 		});
 	m_listButton.push_back(button);
 
+	//box
+	texture = ResourceManagers::GetInstance()->GetTexture("land.tga");
+	m_box = std::make_shared<Sprite2D>(model, shader, texture);
+	m_box->Set2DPosition((float)Globals::screenWidth / 2, (float)Globals::screenHeight / 2);
+	m_box->SetSize(150, 150);
 	// score
 	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
 	std::shared_ptr<Font> font = ResourceManagers::GetInstance()->GetFont("Brightly Crush Shine.otf");
@@ -58,6 +63,12 @@ void GSPlay::Init()
 	obj->SetSize(30, 40);
 	m_listAnimation.push_back(obj);
 	m_KeyPress = 0;
+
+
+	
+
+
+
 }
 
 void GSPlay::Exit()
