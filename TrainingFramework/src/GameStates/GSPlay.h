@@ -30,10 +30,13 @@ public:
 
 private:
 	std::shared_ptr<Sprite2D>	m_background;
-	std::shared_ptr<Sprite2D>	m_box;
+	std::shared_ptr<Sprite2D>   m_box;
 	std::shared_ptr<Text>		m_score;
+	std::shared_ptr<SpriteAnimation> obj;
 	std::list<std::shared_ptr<GameButton>>	m_listButton;
 	std::list<std::shared_ptr<SpriteAnimation>>	m_listAnimation;
+	int x_val;
+	int y_val;
 
 };
 

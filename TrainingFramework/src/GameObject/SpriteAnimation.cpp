@@ -21,6 +21,7 @@ SpriteAnimation::SpriteAnimation(std::shared_ptr<Model> model, std::shared_ptr<S
 
 SpriteAnimation::~SpriteAnimation()
 {
+	
 }
 
 void SpriteAnimation::Init()

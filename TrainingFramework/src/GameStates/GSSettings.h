@@ -1,18 +1,17 @@
 #pragma once
 #include "GameStateBase.h"
-
-class GSIntro : public GameStateBase
+#include "GameButton.h"
+class GSSettings : public GameStateBase
 {
 public:
-	GSIntro();
-	~GSIntro();
+	GSSettings();
+	~GSSettings();
 
 	void	Init() override;
 	void	Exit() override;
 
 	void	Pause() override;
 	void	Resume() override;
-
 	void	HandleEvents() override;
 	void	HandleKeyEvents(int key, bool bIsPressed) override;
 	void	HandleTouchEvents(int x, int y, bool bIsPressed) override;
@@ -21,8 +20,8 @@ public:
 	void	Draw() override;
 
 private:
-	std::shared_ptr<Sprite2D> m_logo;
-
+	std::shared_ptr<Sprite2D> m_settings;
+	std::list<std::shared_ptr<GameButton>>	m_listButton;
+	std::shared_ptr<Text>					m_textGameName;
 	float	m_time;
 };
-

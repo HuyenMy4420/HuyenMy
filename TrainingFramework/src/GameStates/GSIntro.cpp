@@ -1,5 +1,6 @@
 #include "GSIntro.h"
 
+
 GSIntro::GSIntro() : GameStateBase(StateType::STATE_INTRO), m_time(0.0f)
 {
 }
