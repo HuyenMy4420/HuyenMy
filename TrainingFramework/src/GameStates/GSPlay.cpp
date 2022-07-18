@@ -61,10 +61,10 @@ void GSPlay::Init()
 	//nhan vat
 	shader = ResourceManagers::GetInstance()->GetShader("Animation");
 	texture = ResourceManagers::GetInstance()->GetTexture("penguin12.tga");
-	std::shared_ptr<SpriteAnimation> obj = std::make_shared<SpriteAnimation>(model, shader, texture,9,5,4,0.6f);
-	obj->Set2DPosition(500, 400);
-	obj->SetSize(50, 40);
-	m_listAnimation.push_back(obj);
+	penguin = std::make_shared<SpriteAnimation>(model, shader, texture,9,5,4,0.6f);
+	penguin->Set2DPosition(500, 400);
+	penguin->SetSize(50, 40);
+	m_listAnimation.push_back(penguin);
 	m_KeyPress = 0;
 	
 }
@@ -96,7 +96,7 @@ void GSPlay::HandleKeyEvents(int key, bool bIsPressed)
 		{
 		case KEY_MOVE_LEFT:
 			m_KeyPress |= 1;
-			x_val -= 5;
+			
 			break;
 		case KEY_MOVE_BACKWORD:
 			m_KeyPress |= 1<<1;
@@ -152,6 +152,18 @@ void GSPlay::Update(float deltaTime)
 {
 	switch (m_KeyPress)//Handle Key event
 	{
+	case 1:
+		penguin->Move2DPosition(-100 * deltaTime, 0);
+		break;
+	case 1 << 1:
+		penguin->Move2DPosition(0, 100 * deltaTime);
+		break;
+	case 1 << 2:
+		penguin->Move2DPosition(100 * deltaTime, 0);
+		break;
+	case 1 << 3:
+		penguin->Move2DPosition(0, -100 * deltaTime);
+		break;
 	default:
 		break;
 	}
@@ -170,6 +182,7 @@ void GSPlay::Draw()
 	m_background->Draw();
 	m_box->Draw();
 	m_score->Draw();
+	penguin->Draw();
 	for (auto it : m_listButton)
 	{
 		it->Draw();

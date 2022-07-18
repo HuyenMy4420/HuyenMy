@@ -143,3 +143,7 @@ void SpriteAnimation::SetSize(GLint width, GLint height)
 	m_scale = Vector3((float)m_iWidth, (float)m_iHeight, 1.0f);
 	CalculateWorldMatrix();
 }
+void SpriteAnimation::Move2DPosition(GLint x, GLint y) {
+	m_position += Vector3((float)x, (float)y, 0.0f);
+	CalculateWorldMatrix();
+}
