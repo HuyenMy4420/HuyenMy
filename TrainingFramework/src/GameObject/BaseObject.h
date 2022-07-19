@@ -20,8 +20,8 @@ public:
 		m_position(Vector3(0.0f, 0.0f, 0.0f)), m_rotation(Vector3(0.0f, 0.0f, 0.0f)), m_scale(Vector3(1.0f, 1.0f, 1.0f)) {}
 	virtual ~BaseObject() {}
 
-	virtual void Init() = 0;
-	virtual void Draw() = 0;
+	virtual void Init()= 0 ;
+	virtual void Draw() =0 ;
 	virtual void Update(GLfloat deltaTime) = 0;
 
 	void SetObjectID(GLuint id) { m_id = id; }
@@ -42,7 +42,9 @@ public:
 
 	void SetTexture(std::shared_ptr<Texture> texture) { m_pTexture = texture; }
 
-	void SetPosition(Vector3 position) { m_position = position; }
+	void SetPosition(Vector3 position) {
+		m_position = position;
+	}
 	Vector3 GetPosition() { return m_position; }
 
 	void SetRotation(Vector3 rotation) { m_rotation = rotation; }
@@ -61,13 +63,17 @@ public:
 		T.SetTranslation(m_position);
 		m_worldMatrix = S * R * T;
 	}
+	
+
 
 protected:
+
 	Vector3			m_position;
 	Vector3			m_scale;
 	Vector3			m_rotation;
 	Vector4			m_color;
 	Matrix			m_worldMatrix;
+
 
 	std::shared_ptr<Model>		m_pModel;
 	std::shared_ptr<Shader>		m_pShader;
@@ -76,6 +82,7 @@ protected:
 
 private:
 	GLint			m_id;
+	
 	std::string		m_name;
 };
 

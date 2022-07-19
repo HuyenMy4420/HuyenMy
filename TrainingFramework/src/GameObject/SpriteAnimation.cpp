@@ -17,10 +17,15 @@ SpriteAnimation::SpriteAnimation(std::shared_ptr<Model> model, std::shared_ptr<S
 	m_currentTime = 0.0f;
 	m_currentAction = currentAction;
 	Init();
+	
+
+	
+
 }
 
 SpriteAnimation::~SpriteAnimation()
 {
+	
 	
 }
 
@@ -28,6 +33,7 @@ void SpriteAnimation::Init()
 {
 	SetCamera(Application::GetInstance()->GetCamera());
 	CalculateWorldMatrix();
+	
 }
 
 void SpriteAnimation::Draw()
@@ -120,6 +126,8 @@ void SpriteAnimation::Update(GLfloat deltatime)
 
 void SpriteAnimation::Set2DPosition(GLint x, GLint y)
 {
+
+	
 	m_position = Vector3((float)x, (float)y, 0.0f);
 	CalculateWorldMatrix();
 }
@@ -144,6 +152,21 @@ void SpriteAnimation::SetSize(GLint width, GLint height)
 	CalculateWorldMatrix();
 }
 void SpriteAnimation::Move2DPosition(GLint x, GLint y) {
+		
 	m_position += Vector3((float)x, (float)y, 0.0f);
+	if (m_position.x < 35 ) {
+		m_position.x +=3;
+	}
+	else if (m_position.x > 865) {
+		m_position.x -= 3;
+	}
+	else if (m_position.y < 35) {
+		m_position.y += 3;
+	}
+	else if(m_position.y > 445) {
+		m_position.y -= 3;
+	}
+	
+	
 	CalculateWorldMatrix();
 }
