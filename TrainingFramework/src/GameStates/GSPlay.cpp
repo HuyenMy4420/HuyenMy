@@ -1,4 +1,4 @@
-#include "GSPlay.h"
+﻿#include "GSPlay.h"
 #include "Shader.h"
 #include "Texture.h"
 #include "Model.h"
@@ -37,9 +37,9 @@ void GSPlay::Init()
 
 //box
 	texture = ResourceManagers::GetInstance()->GetTexture("Peashooter.tga");
-	m_box = std::make_shared<Sprite2D>(model, shader, texture);
-	m_box->Set2DPosition(140,440);
-	m_box->SetSize(50,50);
+	flower = std::make_shared<Sprite2D>(model, shader, texture);
+	flower->Set2DPosition(140,440);
+	flower->SetSize(50,50);
 
 
 	// button close
@@ -63,12 +63,24 @@ void GSPlay::Init()
 	shader = ResourceManagers::GetInstance()->GetShader("Animation");
 	texture = ResourceManagers::GetInstance()->GetTexture("penguin12.tga");
 	penguin = std::make_shared<SpriteAnimation>(model, shader, texture,9,5,4,0.6f);
-	penguin->Set2DPosition(500, 400);
+	penguin->Set2DPosition(500, 440);
 	penguin->SetSize(50, 40);
 	m_listAnimation.push_back(penguin);
 	m_KeyPress = 0;
 }
+int GSPlay:: isCollision(std::shared_ptr<SpriteAnimation> penguin, std::shared_ptr<Sprite2D> flower) {
+	Vector3 penguin_pos = penguin->Get2DPosition();
+	Vector3 flower_pos = flower->Get2DPosition();
+	const int diff = 20; // change -> (pen.width + flower.width) / 2
+	
+	if (abs(penguin_pos.x - flower_pos.x) < diff && abs(penguin_pos.y - flower_pos.y) < diff) {
+		return 1;
+	}
+	else {
+		return 0;
 
+	}
+}
 void GSPlay::Exit()
 {
 }
@@ -155,27 +167,38 @@ void GSPlay::HandleMouseMoveEvents(int x, int y)
 
 void GSPlay::Update(float deltaTime)
 {
-	switch (m_KeyPress)//Handle Key event
-	{
-	case 1:
-		penguin->Move2DPosition(-3, 0);
-		break;
-	case 1 << 1:
-		penguin->Move2DPosition(0, 3);
-		break;
-	case 1 << 2:
-		penguin->Move2DPosition(3, 0);
-		break;
-	case 1 << 3:
-		penguin->Move2DPosition(0, -3);
-		break;
-	case 1 << 4:
-		//Circle* p_circle = new Circle();
-	
-		break;
-	default:
-		break;
+
+	// check message đi. shared_ptr lay object ra kieu gi the
+	if (isCollision(penguin, flower)) {
+		// nhay len nhu mario phai co van toc + gia toc nua
+		// con nay di cham qua
+		return; // dung im roi
 	}
+	else {
+		switch (m_KeyPress)//Handle Key event
+		{
+		case 1:
+			penguin->Move2DPosition(-3, 0);
+			break;
+		case 1 << 1:
+			penguin->Move2DPosition(0, 3);
+			break;
+		case 1 << 2:
+			penguin->Move2DPosition(3, 0);
+			break;
+		case 1 << 3:
+			penguin->Move2DPosition(0, -3);
+			break;
+		case 1 << 4:
+			//Circle* p_circle = new Circle();
+
+			break;
+		default:
+			break;
+		}
+
+	}
+
 
 	for (auto it : m_listButton)
 	{
@@ -190,7 +213,7 @@ void GSPlay::Update(float deltaTime)
 void GSPlay::Draw()
 {
 	m_background->Draw();
-	m_box->Draw();
+	flower->Draw();
 	m_score->Draw();
 	
 	penguin->Draw();

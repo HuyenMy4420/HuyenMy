@@ -126,8 +126,6 @@ void SpriteAnimation::Update(GLfloat deltatime)
 
 void SpriteAnimation::Set2DPosition(GLint x, GLint y)
 {
-
-	
 	m_position = Vector3((float)x, (float)y, 0.0f);
 	CalculateWorldMatrix();
 }
@@ -138,12 +136,10 @@ void SpriteAnimation::SetRotation(Vector3 rotation)
 	CalculateWorldMatrix();
 }
 
-Vector2 SpriteAnimation::Get2DPosition()
+Vector3 SpriteAnimation::Get2DPosition()
 {
-	return m_Vec2DPos;
+	return m_position;
 }
-
-
 void SpriteAnimation::SetSize(GLint width, GLint height)
 {
 	m_iWidth = width;
@@ -166,7 +162,6 @@ void SpriteAnimation::Move2DPosition(GLint x, GLint y) {
 	else if(m_position.y > 445) {
 		m_position.y -= 3;
 	}
-	
 	
 	CalculateWorldMatrix();
 }

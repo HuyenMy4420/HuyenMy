@@ -1,7 +1,5 @@
 #pragma once
 #include "utilities.h" 
-
-
 class Shader;
 class Model;
 class Texture;
@@ -81,8 +79,7 @@ protected:
 	std::shared_ptr<Camera>		m_pCamera;
 
 private:
-	GLint			m_id;
-	
+	GLint			m_id;	
 	std::string		m_name;
 };
 
