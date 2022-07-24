@@ -15,7 +15,7 @@ GSMenu::~GSMenu()
 void GSMenu::Init()
 {
 	auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D.nfg");
-	auto texture = ResourceManagers::GetInstance()->GetTexture("menu1.tga");
+	auto texture = ResourceManagers::GetInstance()->GetTexture("menu3.tga");
 
 	// background
 	auto shader = ResourceManagers::GetInstance()->GetShader("TextureShader");
@@ -26,7 +26,7 @@ void GSMenu::Init()
 	// play button
 	texture = ResourceManagers::GetInstance()->GetTexture("btn_play1.tga");
 	std::shared_ptr<GameButton> button = std::make_shared<GameButton>(model, shader, texture);
-	button->Set2DPosition(350,240);
+	button->Set2DPosition(Globals::screenWidth / 2, Globals::screenHeight / 2);
 	button->SetSize(100, 100);
 	button->SetOnClick([]() {
 			GameStateMachine::GetInstance()->ChangeState(StateType::STATE_PLAY);
@@ -55,9 +55,9 @@ void GSMenu::Init()
 
 	// game title
 	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
-	std::shared_ptr<Font> font = ResourceManagers::GetInstance()->GetFont("VNBAHAB.TTF");
-	m_textGameName = std::make_shared< Text>(shader, font, "Adventure Game", Vector4(1.0f, 0.4f, 0.1f, 1.0f), 3.0f);
-	m_textGameName->Set2DPosition(Vector2(280,170));
+	std::shared_ptr<Font> font = ResourceManagers::GetInstance()->GetFont("Brightly Crush Shine.otf");
+	m_textGameName = std::make_shared< Text>(shader, font, "Typing Game", Vector4(0.27f, 0.25f, 0.43f, 2.0f), 3.0f);
+	m_textGameName->Set2DPosition(Vector2(95,280));
 
 	std::string name = "Alarm01.wav";
 	ResourceManagers::GetInstance()->PlaySound(name);

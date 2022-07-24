@@ -150,16 +150,16 @@ void SpriteAnimation::SetSize(GLint width, GLint height)
 void SpriteAnimation::Move2DPosition(GLint x, GLint y) {
 		
 	m_position += Vector3((float)x, (float)y, 0.0f);
-	if (m_position.x < 35 ) {
+	if (m_position.x < 20 ) {
 		m_position.x +=3;
 	}
-	else if (m_position.x > 865) {
+	else if (m_position.x > 460) {
 		m_position.x -= 3;
 	}
-	else if (m_position.y < 35) {
+	else if (m_position.y < 5) {
 		m_position.y += 3;
 	}
-	else if(m_position.y > 445) {
+	else if(m_position.y > 650) {
 		m_position.y -= 3;
 	}
 	

@@ -25,7 +25,6 @@ public:
 	void		SetRotation(Vector3 rotation);
 	void		Move2DPosition(GLint x, GLint y);
 	Vector3		Get2DPosition();
-	Vector3		GetSize();
 	void		SetSize(GLint width, GLint height);
 
 };

@@ -92,9 +92,20 @@ public:
 #define KEY_SPACE			VK_SPACE
 #define KEY_UP				VK_UP
 #define KEY_DOWN			VK_DOWN
-#define KEY_MOVE_LEFT		'A'
-#define KEY_MOVE_RIGHT		'D'
-#define KEY_MOVE_FORWORD	'W'
-#define KEY_MOVE_BACKWORD	'S'
+#define KEY_A		'A'
+#define KEY_B		'B'
+#define KEY_C		'C'
+#define KEY_D		'D'
+#define KEY_E		'E'
+#define KEY_F		'F'
+#define KEY_G		'G'
+#define KEY_H		'H'
+#define KEY_I		'I'
+#define KEY_J		'J'
+#define KEY_K		'K'
+#define KEY_M		'M'
+#define KEY_N		'N'
+#define KEY_O		'O'
+#define KEY_P	'P'
 
 #endif
