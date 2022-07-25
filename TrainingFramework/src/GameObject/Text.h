@@ -31,6 +31,9 @@ public:
 	void		Init() override;
 	void		Draw() final;
 	void		Update(GLfloat deltatime) override;
+
+	std::string		GetText();
+
 	void		SetFont(std::shared_ptr<Font> font);
 	void		SetText(std::string text);
 

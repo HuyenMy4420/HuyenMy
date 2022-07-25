@@ -27,22 +27,15 @@ public:
 	void	HandleMouseMoveEvents(int x, int y) override;
 	void	Update(float deltaTime) override;
 	void	Draw() override;
-	GLfloat timer = 0.0f;
-	int isType(int key, std::shared_ptr<Sprite2D> m_alpha);
 	int m_KeyPress;
-	int keypress;
-	void check(int key);
-	int isCollision(std::shared_ptr<SpriteAnimation> penguin, std::shared_ptr<Sprite2D> flower);
-	static const int y_PENGUIN = 700;
-	const int gravity = 1;	
-	bool isJumping = false;	
-	bool isBottom = true;
-	bool IsActive = false;
-	struct point {
-		int x, y;
-	};
+	void GenerateTexts();
+	void CheckTexts(int key);
+
+
+
 
 private:
+	GLfloat m_timer = 0.0f;
 	std::shared_ptr<Sprite2D>	m_background;
 	std::shared_ptr<Sprite2D>   flower;
 	std::shared_ptr<Sprite2D>   plant;
@@ -50,6 +43,6 @@ private:
 	std::shared_ptr<SpriteAnimation> penguin;
 	std::list<std::shared_ptr<GameButton>>	m_listButton;
 	std::list<std::shared_ptr<SpriteAnimation>>	m_listAnimation;
-	std::list<std::shared_ptr<Text>>	m_alpha;
+	std::list<std::shared_ptr<Text>>	m_listTexts;
 };
 

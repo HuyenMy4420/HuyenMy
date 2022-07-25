@@ -117,7 +117,9 @@ void Text::Update(GLfloat deltatime)
 {
 }
 
-
+std::string Text::GetText() {
+	return m_text;
+}
 
 void Text::SetFont(std::shared_ptr<Font> font)
 {
