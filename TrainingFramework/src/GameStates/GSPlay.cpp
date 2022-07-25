@@ -107,37 +107,14 @@ void GSPlay::HandleEvents()
 {
 
 }
-
+void GSPlay::check(int key) {
+	if()
+}
 void GSPlay::HandleKeyEvents(int key, bool bIsPressed)
 {
+	int keypress = key;
 	if (bIsPressed) {
 		switch (key) {
-		case KEY_A:
-			break;
-		case KEY_B:
-			break;
-		case KEY_C:
-			break;
-		case KEY_D:
-			break;
-		case KEY_E:
-			break;
-		case KEY_F:
-			break;
-		case KEY_G:
-			break;
-		case KEY_H:
-			break;
-		case KEY_I:
-			break;
-		case KEY_J:
-			break;
-		case KEY_K:
-			break;
-		case KEY_M:
-			break;
-		case KEY_N:
-			break;
 		}
 	}
 	
@@ -190,6 +167,7 @@ void GSPlay::HandleKeyEvents(int key, bool bIsPressed)
 	}
 }
 
+
 void GSPlay::HandleTouchEvents(int x, int y, bool bIsPressed)
 {
 	for (auto button : m_listButton)
@@ -204,14 +182,19 @@ void GSPlay::HandleTouchEvents(int x, int y, bool bIsPressed)
 int GSPlay:: isType(int key, std::shared_ptr<Sprite2D> m_alpha) {
 }*/
 
+
 void GSPlay::HandleMouseMoveEvents(int x, int y)
 {
 }
+bool KeyPress = false;
 void GSPlay::Update(float deltaTime)
 {
 		switch (m_KeyPress)//Handle Key event
 		{
+
 		case 1:
+			KeyPress = true;
+			IsActive = false;
 			penguin->Move2DPosition(-3, 0);
 			break;
 		case 1 << 1:
@@ -234,42 +217,33 @@ void GSPlay::Update(float deltaTime)
 	{
 		it->Update(deltaTime);
 	}
+
+	// Sinh chu
 	auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D.nfg");
 	auto shader = ResourceManagers::GetInstance()->GetShader("TextureShader");
-	point Alpha[20];
 	std::string alpha_text;
 	srand(time(NULL));
-	for (int i = 0; i < 5; i++) {
-		Alpha[i].x = rand() % 480;
-		Alpha[i].y = rand() % 533;
-	}
 	int Id_alpha=rand() % 5;
-	if (Id_alpha == 1) alpha_text = "chuA.tga";
+	if (Id_alpha == 1)
+		alpha_text = "chuA.tga";
 		else if (Id_alpha == 2) alpha_text = "chuB.tga";
 		else if (Id_alpha == 3) alpha_text = "chuC.tga";
 		else if (Id_alpha == 4) alpha_text = "chuD.tga";
 		else alpha_text = "chuE.tga";
-	auto texture = ResourceManagers::GetInstance()->GetTexture(alpha_text);
 	if (timer >= 2.0f) {
 		timer = 0.0f;
-		int x = rand() % (Globals::screenWidth);
-		int y = rand() % (Globals::screenHeight);
-		auto sprite = std::make_shared<Sprite2D>(model, shader, texture);
-		sprite->Set2DPosition(x, y);
-		sprite->SetSize(50, 50);
-		m_alpha.push_back(sprite);
-
+		int x = rand() % (480);
+		int y = rand() % (533);
+		auto text = std::make_shared<Text>(shader, font, alpha_text, TextColor::RED, 2.0);
+		text->Set2DPosition(x, y);
+		m_alpha.push_back(text);
 		for (int i = 0; i < 3; i++) {
-			sprite->Set2DPosition(Alpha[i].x, Alpha[i].y);
+			text->Set2DPosition(x, y);
 		}
 	} timer += deltaTime;
-	switch (m_KeyPress)
-	{
-	case KEY_A:
-		
-	default:
-		break;
-	}
+
+	// Check chu
+	std::list<std::shared_ptr<Text>> ::iterator text_alpha = m_alpha.begin();
 }
 
 void GSPlay::Draw()
@@ -286,7 +260,10 @@ void GSPlay::Draw()
 	}
 	for (auto it : m_alpha)
 	{
-		it->Draw();
+		if(it ->IsActive)\
+		{
+			it->Draw();
+		}
 	}
 
 	for (auto it : m_listAnimation)

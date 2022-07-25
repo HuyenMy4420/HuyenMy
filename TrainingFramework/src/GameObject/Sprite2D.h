@@ -7,6 +7,7 @@ protected:
 	GLint		m_iWidth;
 	GLint		m_iHeight;
 	GLuint		m_vboId;
+	
 
 public:
 	Sprite2D() : BaseObject(), m_iWidth(0), m_iHeight(0), m_vboId(0) {}
@@ -23,5 +24,6 @@ public:
 	void		SetRotation(Vector3 rotation);
 	void		SetSize(GLint width, GLint height);
 	Vector3		Get2DPosition();
+	bool		IsActive;
 };
 
