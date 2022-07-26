@@ -25,6 +25,6 @@ public:
 
 	Vector3		Get2DPosition();
 
-	bool		IsActive;
+	
 };
 

@@ -20,7 +20,13 @@ void GSPlay::CheckTexts(int key)
 	ite = std::find_if(m_listTexts.begin(), m_listTexts.end(), [this, str](const std::shared_ptr<Text>& text) {
 		return text->GetText() == str;
 		});
-	if (ite != m_listTexts.end())
+	if (ite != m_listTexts.end()) {
 		m_listTexts.erase(ite);
+		score++;
+		m_score->SetText("Score: " + std::to_string(score));
+	}
+
+	
+
 }
 

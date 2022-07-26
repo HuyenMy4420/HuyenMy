@@ -30,6 +30,7 @@ public:
 	int m_KeyPress;
 	void GenerateTexts();
 	void CheckTexts(int key);
+	int score=0;
 
 
 

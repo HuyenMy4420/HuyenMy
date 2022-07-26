@@ -24,7 +24,7 @@ GSPlay::~GSPlay()
 void GSPlay::Init()
 {
 	auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D.nfg");
-	auto texture = ResourceManagers::GetInstance()->GetTexture("landcaspe.tga");
+	auto texture = ResourceManagers::GetInstance()->GetTexture("bk1.tga");
 
 	// background
 	auto shader = ResourceManagers::GetInstance()->GetShader("TextureShader");
@@ -32,10 +32,10 @@ void GSPlay::Init()
 	m_background->Set2DPosition((float)Globals::screenWidth / 2, (float)Globals::screenHeight / 2);
 	m_background->SetSize(Globals::screenWidth, Globals::screenHeight);
 
-	texture = ResourceManagers::GetInstance()->GetTexture("btn_close1.tga");
+	texture = ResourceManagers::GetInstance()->GetTexture("close.tga");
 	std::shared_ptr<GameButton>  button = std::make_shared<GameButton>(model, shader, texture);
-	button->Set2DPosition(Globals::screenWidth - 50, 25);
-	button->SetSize(50, 50);
+	button->Set2DPosition(Globals::screenWidth - 35, 25);
+	button->SetSize(60, 55);
 	button->SetOnClick([this]() {
 		GameStateMachine::GetInstance()->PopState();
 		});
@@ -44,7 +44,8 @@ void GSPlay::Init()
 	// score
 	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
 	std::shared_ptr<Font> font = ResourceManagers::GetInstance()->GetFont("Brightly Crush Shine.otf");
-	m_score = std::make_shared< Text>(shader, font, "score: 10", TextColor::RED, 1.0);
+	std::string ScoreText = std::to_string(score);
+	m_score = std::make_shared< Text>(shader, font, "score: 0 ", TextColor::BLUE, 1.0);
 	m_score->Set2DPosition(Vector2(5, 25));
 
 	//nhan vat
@@ -171,7 +172,7 @@ void GSPlay::Update(float deltaTime)
 		it->Update(deltaTime);
 	}
 
-	if (m_timer >= 2.0)
+	if (m_timer >= 1.0)
 	{
 		m_timer = 0.0f;
 
