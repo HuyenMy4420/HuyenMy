@@ -15,7 +15,7 @@ GSMenu::~GSMenu()
 void GSMenu::Init()
 {
 	auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D.nfg");
-	auto texture = ResourceManagers::GetInstance()->GetTexture("menu3.tga");
+	auto texture = ResourceManagers::GetInstance()->GetTexture("menu5.tga");
 
 	// background
 	auto shader = ResourceManagers::GetInstance()->GetShader("TextureShader");
@@ -26,7 +26,7 @@ void GSMenu::Init()
 	// play button
 	texture = ResourceManagers::GetInstance()->GetTexture("play.tga");
 	std::shared_ptr<GameButton> button = std::make_shared<GameButton>(model, shader, texture);
-	button->Set2DPosition(Globals::screenWidth / 2, Globals::screenHeight / 2);
+	button->Set2DPosition(Globals::screenWidth / 2,320);
 	button->SetSize(150, 75);
 	button->SetOnClick([]() {
 			GameStateMachine::GetInstance()->ChangeState(StateType::STATE_PLAY);
@@ -46,21 +46,22 @@ void GSMenu::Init()
 	// exit button
 	texture = ResourceManagers::GetInstance()->GetTexture("exit.tga");
 	button = std::make_shared<GameButton>(model, shader, texture);
-	button->Set2DPosition(Globals::screenWidth / 2, Globals::screenHeight / 2 + 75);
+	button->Set2DPosition(Globals::screenWidth / 2, Globals::screenHeight / 2 + 60);
 	button->SetSize(140,80);
 	button->SetOnClick([]() {
 		exit(0);
 		});
 	m_listButton.push_back(button);
-
+	std::string name = "music2.mp3";
+	ResourceManagers::GetInstance()->PlaySound(name);
 	// game title
+	/*
 	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
 	std::shared_ptr<Font> font = ResourceManagers::GetInstance()->GetFont("iciel Pony.ttf");
 	m_textGameName = std::make_shared< Text>(shader, font, "Typing Game", Vector4(0.27f, 0.25f, 0.43f, 2.0f), 3.0f);
 	m_textGameName->Set2DPosition(Vector2(95,280));
-
 	std::string name = "Alarm01.wav";
-	ResourceManagers::GetInstance()->PlaySound(name);
+	ResourceManagers::GetInstance()->PlaySound(name);*/
 }
 
 void GSMenu::Exit()
@@ -117,5 +118,5 @@ void GSMenu::Draw()
 	{
 		it->Draw();
 	}
-	m_textGameName->Draw();
+	//m_textGameName->Draw();
 }

@@ -22,6 +22,8 @@ void GSPlay::CheckTexts(int key)
 		});
 	if (ite != m_listTexts.end()) {
 		m_listTexts.erase(ite);
+		std::string name = "bongno.mp3";
+		ResourceManagers::GetInstance()->PlaySound(name);
 		score++;
 		m_score->SetText("Score: " + std::to_string(score));
 	}
@@ -29,4 +31,3 @@ void GSPlay::CheckTexts(int key)
 	
 
 }
-

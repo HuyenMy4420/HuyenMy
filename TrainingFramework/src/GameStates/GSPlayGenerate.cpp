@@ -32,10 +32,10 @@ void GSPlay::GenerateTexts()
 
 	std::shared_ptr<Text> text = std::make_shared<Text>(shader, font, str, textColor, TEXT_SIZE);
 	GLfloat x = GLfloat(rand() % GLint(Globals::screenWidth - TEXT_SIZE * 30));
-	GLfloat y = GLfloat(rand() % GLint(533));
+	GLfloat y = GLfloat(rand() % GLint(533)+70);
 	text->Set2DPosition(x, y);
 	int soluong = m_listTexts.size();
-	if (soluong > 10) {
+	if (soluong > 7) {
 		GameStateMachine::GetInstance()->ChangeState(StateType::STATE_GAMEOVER);
 	}
 	GLfloat z = (rand() % 500) / 1000;

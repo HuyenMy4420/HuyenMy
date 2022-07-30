@@ -45,7 +45,7 @@ void GSPlay::Init()
 	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
 	std::shared_ptr<Font> font = ResourceManagers::GetInstance()->GetFont("Brightly Crush Shine.otf");
 	std::string ScoreText = std::to_string(score);
-	m_score = std::make_shared< Text>(shader, font, "score: 0 ", TextColor::BLUE, 1.0);
+	m_score = std::make_shared< Text>(shader, font, "score: 0 ", TextColor::PURPLE, 1.0);
 	m_score->Set2DPosition(Vector2(5, 25));
 
 	//nhan vat
@@ -56,6 +56,8 @@ void GSPlay::Init()
 	penguin->SetSize(60, 60);
 	m_listAnimation.push_back(penguin);
 	m_KeyPress = 0;
+}
+void GSPlay::checkColli() {
 }
 void GSPlay::Exit()
 {
@@ -150,11 +152,13 @@ void GSPlay::Update(float deltaTime)
 	{
 	case 1:
 		penguin->Move2DPosition(-3, 0);
+		penguin->SetRotation(Vector3(0, -PI, 0));
 		break;
 	case 1 << 1:
 		break;
 	case 1 << 2:
 		penguin->Move2DPosition(3, 0);
+		penguin->SetRotation(Vector3(0, 0, 0));
 		break;
 	case 1 << 3:
 		break;
@@ -180,14 +184,15 @@ void GSPlay::Update(float deltaTime)
 	}
 	else
 		m_timer += 1 * deltaTime;
+	
 }
 
 void GSPlay::Draw()
 {
-
 	m_background->Draw();
 	m_score->Draw();
 	penguin->Draw();
+	
 	for (auto it : m_listButton)
 	{
 		it->Draw();
@@ -200,4 +205,5 @@ void GSPlay::Draw()
 	{
 		it->Draw();
 	}
+
 }

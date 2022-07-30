@@ -31,19 +31,21 @@ public:
 	void GenerateTexts();
 	void CheckTexts(int key);
 	int score=0;
-
-
+	void checkColli();
+	float m_time=0.0;
 
 
 private:
+	
 	GLfloat m_timer = 0.0f;
 	std::shared_ptr<Sprite2D>	m_background;
 	std::shared_ptr<Sprite2D>   flower;
-	std::shared_ptr<Sprite2D>   plant;
+	std::shared_ptr<Sprite2D>   note_sound;
 	std::shared_ptr<Text>		m_score;
 	std::shared_ptr<SpriteAnimation> penguin;
 	std::list<std::shared_ptr<GameButton>>	m_listButton;
 	std::list<std::shared_ptr<SpriteAnimation>>	m_listAnimation;
 	std::list<std::shared_ptr<Text>>	m_listTexts;
+	std::list<std::shared_ptr<Sprite2D>>	m_listFruit;
 };
 
